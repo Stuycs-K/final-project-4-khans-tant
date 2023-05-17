@@ -1,21 +1,25 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Sudman Khan
 
-### date x
+### 5/17/23
 
-info
+Researched how an enigma machine works
+
+Sources:
+https://www.101computing.net/enigma-machine-emulator/
+https://www.theguardian.com/technology/2014/nov/14/how-did-enigma-machine-work-imitation-game
 
 ### date y
 
 info
 
 
-## GROUP MEMBER 2
+## Terry Tan
 
 ### date x
 
-info
+enimga Machine
 
 ### date y
 
