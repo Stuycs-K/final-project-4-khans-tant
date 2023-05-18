@@ -10,17 +10,17 @@ Sources:
 https://www.101computing.net/enigma-machine-emulator/
 https://www.theguardian.com/technology/2014/nov/14/how-did-enigma-machine-work-imitation-game
 
-### date y
+### 5/18/23
 
-info
+Additional research done on workings of Enigma machine
 
 
 ## Terry Tan
 
-### date x
+### 5/17/23
 
 enimga Machine
 
-### date y
+### 5/18/23
 
 Additional research done on workings of Enigma machine
