@@ -23,4 +23,4 @@ enimga Machine
 
 ### date y
 
-info
+Additional research done on workings of Enigma machine
