@@ -24,3 +24,7 @@ enimga Machine
 ### 5/18/23
 
 Additional research done on workings of Enigma machine
+
+### 5/19/23 
+
+additional researchand front end development
