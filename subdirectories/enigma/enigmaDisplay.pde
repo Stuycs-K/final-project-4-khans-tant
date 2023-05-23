@@ -1,4 +1,5 @@
 boolean keyReleased;
+char displaykey;
 char keypressed;
 Button[] buttons;
 
@@ -10,9 +11,9 @@ void setup() {
 void draw() {
   background(0);
   updateKeyboard();
-  //updateLights();
+  updateLights();
   if (keyReleased) {
-    println(keypressed);
+    println("Key released: " + keypressed);
     keyReleased = false;
   }
   fill(255,255,255);
@@ -20,7 +21,7 @@ void draw() {
 
 void updateKeyboard() {
   for (int i = 0; i < buttons.length; i++) {
-    if (keyReleased && buttons[i].c == keypressed) {
+    if (keyPressed && buttons[i].c == displaykey) {
       buttons[i].click();
     }
     buttons[i].display();
@@ -36,7 +37,7 @@ void initializeKeyboard() {
 
 void updateLights(){
   for (int i = 0; i < buttons.length; i++) {
-    if (keyReleased && buttons[i].c == keypressed) {
+    if (keyPressed && buttons[i].c == displaykey) {
       fill(255,255,0);
       circle(buttons[i].x,buttons[i].y - 50, 30);
     }
@@ -44,6 +45,9 @@ void updateLights(){
 }
 
 void keyPressed() {
+  if (key >= 'a' && key <= 'z') {
+    displaykey = key;
+  }
 }
 
 void keyReleased() {
