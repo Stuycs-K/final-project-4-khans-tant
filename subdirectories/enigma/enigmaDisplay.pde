@@ -3,8 +3,11 @@ char displaykey;
 char keypressed;
 Button[] buttons;
 
+public void settings(){
+  size(600,1000);
+}
+
 void setup() {
-  size(1000, 500);
   initializeKeyboard();
 }
 
@@ -29,9 +32,16 @@ void updateKeyboard() {
 }
 
 void initializeKeyboard() {
+  int yOffset = 50;
+  int xOffset = 50;
   buttons = new Button[26];
   for (int i = 0; i < buttons.length; i++) {
-    buttons[i] = new Button(25 * i + 25, 100, char('a' + i));
+    if(i % 7 == 0){
+      yOffset += 70;
+      xOffset = 0;
+    }
+    xOffset += 70;
+    buttons[i] = new Button(xOffset + 25, 100 + yOffset, char('a' + i));
   }
 }
 
