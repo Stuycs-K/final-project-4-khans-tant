@@ -1,8 +1,9 @@
-class Button {
+class Light {
   char c;
   int x, y;
 
-  Button(int xpos, int ypos, char character) {
+  Light(int xpos, int ypos, char character) {
+    fill(100);
     textAlign(CENTER, CENTER);
     textSize(20);
     c = character;
@@ -10,13 +11,12 @@ class Button {
     y = ypos;
   }
   void display() {
-    fill(255, 255, 255);
     circle(x, y, 40);
-    fill(0, 0, 0);
+    fill(255);
     text(char(c - 32), x, y);
+    fill(100);
   }
-  void click() {
-    fill(0, 255, 0);
-    circle(x, y, 50);
+  void lightUp() {
+    fill(255, 255, 0);
   }
 }
