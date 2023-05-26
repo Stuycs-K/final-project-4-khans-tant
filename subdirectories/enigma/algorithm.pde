@@ -11,17 +11,17 @@ String reflectB = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
 String reflectC = "FVPJIAOYEDRZXWGCTKUQSBNMHL";
 String plugboard = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-void setup() {
-  ArrayList<String> pairs = new ArrayList<String>();
-  pairs.add("AR");
-  pairs.add("GK");
-  pairs.add("OX");
-  setPlugboard(pairs);
-  runEnigma('M');
-  runEnigma('W');
-  runEnigma('N');
-  exit();
-}
+//void setup() {
+//  ArrayList<String> pairs = new ArrayList<String>();
+//  pairs.add("AR");
+//  pairs.add("GK");
+//  pairs.add("OX");
+//  setPlugboard(pairs);
+//  runEnigma('M');
+//  runEnigma('W');
+//  runEnigma('N');
+//  exit();
+//}
 
 void runEnigma(char letter) {
   char encryptedLetter = 0;

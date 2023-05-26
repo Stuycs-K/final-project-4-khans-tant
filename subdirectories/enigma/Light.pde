@@ -18,5 +18,6 @@ class Light {
   }
   void lightUp() {
     fill(255, 255, 0);
+    circle(x, y, 50);
   }
 }

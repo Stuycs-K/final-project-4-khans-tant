@@ -3,13 +3,14 @@ char displaykey;
 char keypressed;
 Button[] buttons;
 Light[] lights;
+String letters = "qwertyuiopasdfghjklzxcvbnm";
 
 void setup() {
   size(600, 1000);
   initializeKeyboard();
   initializeLights();
   //to test shit
-  println(rotor1.charAt(14));
+  //println(rotor1.charAt(14));
 }
 
 void draw() {
@@ -34,35 +35,37 @@ void updateKeyboard() {
 
 void initializeKeyboard() {
   int yOffset = 50;
-  int xOffset = 50;
+  int xOffset = 75;
   buttons = new Button[26];
   for (int i = 0; i < buttons.length; i++) {
-    if (i % 9 == 0) {
-      yOffset += 60;
-      xOffset = 0;
+    if (i == 10) {
+      yOffset += 50;
+      xOffset = 100;
     }
-    if (i == 18) {
-      xOffset += 30;
+    if (i == 19) {
+      yOffset += 50;
+      xOffset = 150;
     }
-    xOffset += 60;
-    buttons[i] = new Button(xOffset, 600 + yOffset, char('a' + i));
+    buttons[i] = new Button(xOffset, 600 + yOffset, letters.charAt(i));
+    xOffset += 50;
   }
 }
 
 void initializeLights() {
   int yOffset = 50;
-  int xOffset = 50;
+  int xOffset = 75;
   lights = new Light[26];
   for (int i = 0; i < lights.length; i++) {
-    if (i % 9 == 0) {
-      yOffset += 60;
-      xOffset = 0;
+    if (i == 10) {
+      yOffset += 50;
+      xOffset = 100;
     }
-    if (i == 18) {
-      xOffset += 30;
+    if (i == 19) {
+      yOffset += 50;
+      xOffset = 150;
     }
-    xOffset += 60;
-    lights[i] = new Light(xOffset, 100 + yOffset, char('a' + i));
+    lights[i] = new Light(xOffset, 100 + yOffset, letters.charAt(i));
+    xOffset += 50;
   }
 }
 
@@ -71,6 +74,7 @@ void updateLights() {
     lights[i].display();
     if (keyPressed && lights[i].c == displaykey && key >= 'a' && key <= 'z') {
       lights[i].lightUp();
+      println(lights[i].c);
     }
   }
 }
