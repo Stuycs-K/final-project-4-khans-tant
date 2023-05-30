@@ -5,13 +5,13 @@ Button[] buttons;
 Light[] lights;
 String letters = "qwertyuiopasdfghjklzxcvbnm";
 
-void setup() {
-  size(600, 1000);
-  initializeKeyboard();
-  initializeLights();
-  //to test shit
-  //println(rotor1.charAt(14));
-}
+//void setup() {
+//  size(600, 1000);
+//  initializeKeyboard();
+//  initializeLights();
+//  //to test shit
+//  //println(rotor1.charAt(14));
+//}
 
 void draw() {
   background(0);

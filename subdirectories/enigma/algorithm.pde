@@ -1,6 +1,9 @@
 //               0         1         2
-//               01234567890123456789012345            
-String alpha  = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
+//               01234567890123456789012345
+int r1 = 0;
+int r2 = 0;
+int r3 = 0;
+String alpha  = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 String rotor1 = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
 String rotor2 = "AJDKSIRUXBLHWTMCQGZNPYFVOE";
 String rotor3 = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
@@ -11,21 +14,22 @@ String reflectB = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
 String reflectC = "FVPJIAOYEDRZXWGCTKUQSBNMHL";
 String plugboard = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-//void setup() {
-//  ArrayList<String> pairs = new ArrayList<String>();
-//  pairs.add("AR");
-//  pairs.add("GK");
-//  pairs.add("OX");
-//  setPlugboard(pairs);
-//  runEnigma('M');
-//  runEnigma('W');
-//  runEnigma('N');
-//  exit();
-//}
+void setup() {
+  ArrayList<String> pairs = new ArrayList<String>();
+  pairs.add("AR");
+  pairs.add("GK");
+  pairs.add("OX");
+  setPlugboard(pairs);
+  runEnigma('X');
+  runEnigma('J');
+  runEnigma('A');
+  runEnigma('Y');
+  exit();
+}
 
 void runEnigma(char letter) {
   char encryptedLetter = 0;
-  
+
   int signal = plugboard.indexOf(letter);
   //println("pg: " + signal);
   signal = alpha.indexOf(rotor3.charAt(signal));
@@ -43,7 +47,29 @@ void runEnigma(char letter) {
   signal = rotor3.indexOf(alpha.charAt(signal));
   //println("3: " + signal);
   encryptedLetter = plugboard.charAt(signal);
-  print(encryptedLetter);
+  println(encryptedLetter);
+  rotateRotors();
+}
+
+void rotateRotors() {
+  if (r3 < 26) {
+    rotor3 = rotor3.substring(1) + rotor3.substring(0, 1);
+    r3++;
+    //println(rotor3);
+  } else if (r3 == 26 && r2 < 26) {
+    rotor3 = rotor3.substring(1) + rotor3.substring(0, 1);
+    r3 = 0;
+    rotor2 = rotor2.substring(1) + rotor2.substring(0, 1);
+    r2++;
+  } else if (r2 == 26 && r1 < 26) {
+    rotor2 = rotor3.substring(1) + rotor3.substring(0, 1);
+    r2 = 0;
+    rotor1 = rotor1.substring(1) + rotor1.substring(0, 1);
+    r1++;
+  } else if (r1 == 26) {
+    rotor1 = rotor1.substring(1) + rotor1.substring(0, 1);
+    r1 = 0;
+  }
 }
 
 void setPlugboard(ArrayList<String> swaps) {
@@ -56,12 +82,12 @@ void setPlugboard(ArrayList<String> swaps) {
       B = temp;
     }
     if (B != 'Z') {
-      plugboard = plugboard.substring(0, plugboard.indexOf(A)) + B 
-      + plugboard.substring(plugboard.indexOf(A+1), plugboard.indexOf(B)) + A
-      + plugboard.substring(plugboard.indexOf(B+1), plugboard.length());
+      plugboard = plugboard.substring(0, plugboard.indexOf(A)) + B
+        + plugboard.substring(plugboard.indexOf(A+1), plugboard.indexOf(B)) + A
+        + plugboard.substring(plugboard.indexOf(B+1), plugboard.length());
     } else {
-      plugboard = plugboard.substring(0, plugboard.indexOf(A)) + B 
-      + plugboard.substring(plugboard.indexOf(A+1), plugboard.indexOf(B)) + A;
+      plugboard = plugboard.substring(0, plugboard.indexOf(A)) + B
+        + plugboard.substring(plugboard.indexOf(A+1), plugboard.indexOf(B)) + A;
     }
   }
 }
