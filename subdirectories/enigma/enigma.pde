@@ -1,17 +1,18 @@
 boolean keyReleased;
 char displaykey;
 char keypressed;
+char modifiedkey;
 Button[] buttons;
 Light[] lights;
 String letters = "qwertyuiopasdfghjklzxcvbnm";
 
-//void setup() {
-//  size(600, 1000);
-//  initializeKeyboard();
-//  initializeLights();
-//  //to test shit
-//  //println(rotor1.charAt(14));
-//}
+void setup() {
+  size(600, 1000);
+  initializeKeyboard();
+  initializeLights();
+  //to test shit
+  //println(rotor1.charAt(14));
+}
 
 void draw() {
   background(0);
@@ -82,6 +83,7 @@ void updateLights() {
 void keyPressed() {
   if (key >= 'a' && key <= 'z') {
     displaykey = key;
+    println(displaykey);
     //println("button: " + buttons[i] + " lights: " + lights[i]);
   }
 }
@@ -90,5 +92,6 @@ void keyReleased() {
   if (key >= 'a' && key <= 'z') {
     keyReleased = true;
     keypressed = key;
+    modifiedkey = runEnigma(key);
   }
 }
