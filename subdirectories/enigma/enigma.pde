@@ -8,10 +8,19 @@ String letters = "qwertyuiopasdfghjklzxcvbnm";
 
 void setup() {
   size(600, 1000);
+  
   initializeKeyboard();
   initializeLights();
-  //to test shit
-  //println(rotor1.charAt(14));
+  rotor1 = rotorOptions[0];
+  rotor2 = rotorOptions[1];
+  rotor3 = rotorOptions[2];
+  reflector = reflectorOptions[0];
+  ArrayList<String> pairs = new ArrayList<String>();
+  //pairs.add("AR");
+  //pairs.add("GK");
+  //pairs.add("OX");
+  setPlugboard(pairs);
+
 }
 
 void draw() {
@@ -93,5 +102,6 @@ void keyReleased() {
     keyReleased = true;
     keypressed = key;
     modifiedkey = runEnigma(key);
+    println(modifiedkey);
   }
 }
