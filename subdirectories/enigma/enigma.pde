@@ -8,6 +8,7 @@ Plug[] plugs;
 Rotor[] rotors;
 int ble = 0;
 String letters = "qwertyuiopasdfghjklzxcvbnm";
+String encryptedMessage = "";
 
 void setup() {
   size(1200, 1000);
@@ -154,12 +155,17 @@ void drawPaper(){
   for(int i = 0; i < 26; i++){
     line(600,i * 30 + 140, 1180,i * 30 + 140);
   }
+  stroke(255,0,0);
   line(700, 20, 700,919);
   noStroke();
   fill(0);
   circle(650,480, 25);
-  circle(650,280, 25);
-  circle(650,680, 25);
+  circle(650,100, 25);
+  circle(650,850, 25);
+  textAlign(LEFT);
+  text(encryptedMessage, 750, 150);
+  
+  textAlign(CENTER, CENTER);
 }
 
 
@@ -179,6 +185,7 @@ void keyReleased() {
     keyReleased = true;
     keypressed = key;
     modifiedkey = runEnigma(key);
+    encryptedMessage += modifiedkey;
     println(modifiedkey);
   }
 }
