@@ -4,17 +4,19 @@ int r1 = 0;
 int r2 = 0;
 int r3 = 0;
 String alpha  = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-String rotor1 = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
-String rotor2 = "AJDKSIRUXBLHWTMCQGZNPYFVOE";
-String rotor3 = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
-String rotor4 = "ESOVPZJAYQUIRHXLNFTGKDCMWB";
-String rotor5 = "VZBRGITYUPSDNHLXAWMJQOFECK";
-String reflectA = "EJMZALYXVBWFCRQUONTSPIKHGD";
-String reflectB = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
-String reflectC = "FVPJIAOYEDRZXWGCTKUQSBNMHL";
+String[] rotorOptions = {"EKMFLGDQVZNTOWYHXUSPAIBRCJ", "AJDKSIRUXBLHWTMCQGZNPYFVOE", "BDFHJLCPRTXVZNYEIWGAKMUSQO", "ESOVPZJAYQUIRHXLNFTGKDCMWB", "VZBRGITYUPSDNHLXAWMJQOFECK"};
+String[] reflectorOptions = {"EJMZALYXVBWFCRQUONTSPIKHGD", "YRUHQSLDPXNGOKMIEBFZCWVJAT", "FVPJIAOYEDRZXWGCTKUQSBNMHL"};
 String plugboard = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+String rotor1;
+String rotor2;
+String rotor3;
+String reflector;
 
 //void setup() {
+//  rotor1 = rotorOptions[0];
+//  rotor2 = rotorOptions[1];
+//  rotor3 = rotorOptions[2];
+//  reflector = reflectorOptions[0];
 //  ArrayList<String> pairs = new ArrayList<String>();
 //  pairs.add("AR");
 //  pairs.add("GK");
@@ -22,7 +24,7 @@ String plugboard = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 //  setPlugboard(pairs);
 //  for (int i = 0; i < 30; i++) {
 //    print(i + ": "); 
-//    runEnigma('a');
+//    println(runEnigma('a'));
 //  }
 //  exit();
 //}
@@ -38,7 +40,7 @@ char runEnigma(char letter) {
   //println("2: " + signal);
   signal = alpha.indexOf(rotor1.charAt(signal));
   //println("1: " + signal);
-  signal = alpha.indexOf(reflectA.charAt(signal));
+  signal = alpha.indexOf(reflector.charAt(signal));
   //println("re: " + signal);
   signal = rotor1.indexOf(alpha.charAt(signal));
   //println("1: " + signal);

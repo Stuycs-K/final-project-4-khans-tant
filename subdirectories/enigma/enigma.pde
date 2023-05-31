@@ -6,6 +6,7 @@ Button[] buttons;
 Light[] lights;
 Plug[] plugs;
 Rotor[] rotors;
+
 String letters = "qwertyuiopasdfghjklzxcvbnm";
 
 void setup() {
@@ -13,13 +14,17 @@ void setup() {
   initializeKeyboard();
   initializeLights();
   initializePlugBoard();
+  //to test shit
+  //println(rotor1.charAt(14));
+  rotor1 = rotorOptions[0];
+  rotor2 = rotorOptions[1];
+  rotor3 = rotorOptions[2];
+  reflector = reflectorOptions[0];
   ArrayList<String> pairs = new ArrayList<String>();
   pairs.add("AR");
   pairs.add("GK");
   pairs.add("OX");
   setPlugboard(pairs);
-  //to test shit
-  //println(rotor1.charAt(14));
 }
 
 void draw() {
@@ -40,10 +45,13 @@ void drawEnigma(){
   updateKeyboard();
   updateLights();
   updatePlugBoard();
+  updateKeyboard();
+  updateLights();
   if (keyReleased) {
     println("Key released: " + keypressed);
     keyReleased = false;
   }
+  fill(255, 255, 255);
 }
 
 void updateKeyboard() {
@@ -97,10 +105,12 @@ void initializeLights() {
 }
 
 void updateLights() {
-  modifiedkey = runEnigma(displaykey);
+  //if(keypressed != ' ' && keyReleased){
+    //modifiedkey = runEnigma(keypressed);
+  //}
   for (int i = 0; i < lights.length; i++) {
     lights[i].display();
-    if (keyPressed && lights[i].c == displaykey && key >= 'a' && key <= 'z') {
+    if (keyPressed && lights[i].c == Character.toLowerCase(modifiedkey) && key >= 'a' && key <= 'z' && keyReleased) {
       lights[i].lightUp();
     }
     else{
@@ -137,10 +147,13 @@ void initializeRotors(){
   
 }
 
+
 void keyPressed() {
   if (key >= 'a' && key <= 'z') {
+    keyReleased = false;
     displaykey = key;
-    //println("button: " + buttons[i] + " lights: " + lights[i]);
+    modifiedkey = runEnigma(key);
+    println(displaykey);
   }
 }
 
@@ -148,5 +161,7 @@ void keyReleased() {
   if (key >= 'a' && key <= 'z') {
     keyReleased = true;
     keypressed = key;
+    //modifiedkey = runEnigma(key);
+    println(modifiedkey);
   }
 }
