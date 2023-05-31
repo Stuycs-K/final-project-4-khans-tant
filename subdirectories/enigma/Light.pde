@@ -11,15 +11,15 @@ class Light {
     y = ypos;
   }
   void display() {
-    circle(x, y, 40);
+    ellipse(x, y, 40, 30);
     fill(255);
-    text(char(c - 32), x, y);
+    text(char(c - 32), x, y-3);
     fill(100);
   }
   void lightUp() {
-    fill(255,255,0);
-    circle(x, y, 40);
+    fill(255,255,220);
+    ellipse(x, y, 40, 30);
     fill(0);
-    text(char(c - 32), x, y);
+    text(char(c - 32), x, y-3);
   }
 }

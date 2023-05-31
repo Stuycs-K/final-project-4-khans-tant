@@ -11,7 +11,7 @@ class Plug {
   }
   void display() {
     fill(200, 200, 200);
-    circle(x, y, 40);
+    ellipse(x, y, 40, 36);
     fill(0, 0, 0);
     text(char(c - 32), x, y);
   }

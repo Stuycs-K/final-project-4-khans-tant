@@ -10,7 +10,7 @@ Rotor[] rotors;
 String letters = "qwertyuiopasdfghjklzxcvbnm";
 
 void setup() {
-  size(600, 1000);
+  size(1200, 1000);
   initializeKeyboard();
   initializeLights();
   initializePlugBoard();
@@ -30,6 +30,7 @@ void setup() {
 void draw() {
   background(0);
   drawEnigma();
+  drawPaper();
   fill(255, 255, 255);
 }
 
@@ -38,10 +39,9 @@ void drawEnigma(){
   fill(150);
   rect(20, 20, 560, 960, 28);
   fill(190);
-  rect(20, 20, 560, 860, 28);
+  rect(20, 20, 560, 790, 28);
   fill(230);
-  rect(40, 40, 520, 820, 28);
-  stroke(1);
+  rect(40, 40, 520, 750, 28);
   updateKeyboard();
   updateLights();
   updatePlugBoard();
@@ -110,7 +110,7 @@ void updateLights() {
   //}
   for (int i = 0; i < lights.length; i++) {
     lights[i].display();
-    if (keyPressed && lights[i].c == Character.toLowerCase(modifiedkey) && key >= 'a' && key <= 'z' && keyReleased) {
+    if (keyPressed && lights[i].c == Character.toLowerCase(modifiedkey) && key >= 'a' && key <= 'z') {
       lights[i].lightUp();
     }
     else{
@@ -132,7 +132,7 @@ void initializePlugBoard(){
       yOffset += 50;
       xOffset = 150;
     }
-    plugs[i] = new Plug(xOffset, 640 + yOffset, letters.charAt(i));
+    plugs[i] = new Plug(xOffset, 800 + yOffset, letters.charAt(i));
     xOffset += 50;
   }
 }
@@ -147,10 +147,24 @@ void initializeRotors(){
   
 }
 
+void drawPaper(){
+  fill(255,255, 245);
+  rect(600, 20, 580 ,900);
+  stroke(167,202,232);
+  for(int i = 0; i < 26; i++){
+    line(600,i * 30 + 140, 1180,i * 30 + 140);
+  }
+  line(700, 20, 700,919);
+  noStroke();
+  fill(0);
+  circle(650,480, 25);
+  circle(650,280, 25);
+  circle(650,680, 25);
+}
+
 
 void keyPressed() {
   if (key >= 'a' && key <= 'z') {
-    keyReleased = false;
     displaykey = key;
     modifiedkey = runEnigma(key);
     println(displaykey);
