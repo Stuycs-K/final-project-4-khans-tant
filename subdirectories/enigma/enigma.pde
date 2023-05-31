@@ -6,7 +6,7 @@ Button[] buttons;
 Light[] lights;
 Plug[] plugs;
 Rotor[] rotors;
-
+int ble = 0;
 String letters = "qwertyuiopasdfghjklzxcvbnm";
 
 void setup() {
@@ -110,7 +110,7 @@ void updateLights() {
   //}
   for (int i = 0; i < lights.length; i++) {
     lights[i].display();
-    if (keyPressed && lights[i].c == Character.toLowerCase(modifiedkey) && key >= 'a' && key <= 'z' && keyReleased) {
+    if (keyPressed && lights[i].c == Character.toLowerCase(modifiedkey) && key >= 'a' && key <= 'z') {
       lights[i].lightUp();
     }
     else{
@@ -152,7 +152,10 @@ void keyPressed() {
   if (key >= 'a' && key <= 'z') {
     keyReleased = false;
     displaykey = key;
-    modifiedkey = runEnigma(key);
+    if (ble == 0) {
+      modifiedkey = runEnigma(key);
+      ble++;
+    }
     println(displaykey);
   }
 }
@@ -161,7 +164,7 @@ void keyReleased() {
   if (key >= 'a' && key <= 'z') {
     keyReleased = true;
     keypressed = key;
-    //modifiedkey = runEnigma(key);
+    modifiedkey = runEnigma(key);
     println(modifiedkey);
   }
 }
