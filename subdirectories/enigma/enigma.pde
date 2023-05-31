@@ -13,6 +13,11 @@ void setup() {
   initializeKeyboard();
   initializeLights();
   initializePlugBoard();
+  ArrayList<String> pairs = new ArrayList<String>();
+  pairs.add("AR");
+  pairs.add("GK");
+  pairs.add("OX");
+  setPlugboard(pairs);
   //to test shit
   //println(rotor1.charAt(14));
 }
