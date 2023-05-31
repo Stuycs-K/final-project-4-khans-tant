@@ -6,7 +6,7 @@ Button[] buttons;
 Light[] lights;
 Plug[] plugs;
 Rotor[] rotors;
-
+int ble = 0;
 String letters = "qwertyuiopasdfghjklzxcvbnm";
 
 void setup() {
@@ -166,7 +166,10 @@ void drawPaper(){
 void keyPressed() {
   if (key >= 'a' && key <= 'z') {
     displaykey = key;
-    modifiedkey = runEnigma(key);
+    if (ble == 0) {
+      modifiedkey = runEnigma(key);
+      ble++;
+    }
     println(displaykey);
   }
 }
@@ -175,7 +178,7 @@ void keyReleased() {
   if (key >= 'a' && key <= 'z') {
     keyReleased = true;
     keypressed = key;
-    //modifiedkey = runEnigma(key);
+    modifiedkey = runEnigma(key);
     println(modifiedkey);
   }
 }
