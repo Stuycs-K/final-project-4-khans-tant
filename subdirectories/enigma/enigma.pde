@@ -1,27 +1,44 @@
 boolean keyReleased;
 char displaykey;
 char keypressed;
+char modifiedkey;
 Button[] buttons;
 Light[] lights;
+Plug[] plugs;
+Rotor[] rotors;
 String letters = "qwertyuiopasdfghjklzxcvbnm";
 
-//void setup() {
-//  size(600, 1000);
-//  initializeKeyboard();
-//  initializeLights();
-//  //to test shit
-//  //println(rotor1.charAt(14));
-//}
+void setup() {
+  size(600, 1000);
+  initializeKeyboard();
+  initializeLights();
+  initializePlugBoard();
+  //to test shit
+  //println(rotor1.charAt(14));
+}
 
 void draw() {
   background(0);
+  drawEnigma();
+  fill(255, 255, 255);
+}
+
+void drawEnigma(){
+  noStroke();
+  fill(150);
+  rect(20, 20, 560, 960, 28);
+  fill(190);
+  rect(20, 20, 560, 860, 28);
+  fill(230);
+  rect(40, 40, 520, 820, 28);
+  stroke(1);
   updateKeyboard();
   updateLights();
+  updatePlugBoard();
   if (keyReleased) {
     println("Key released: " + keypressed);
     keyReleased = false;
   }
-  fill(255, 255, 255);
 }
 
 void updateKeyboard() {
@@ -29,7 +46,12 @@ void updateKeyboard() {
     if (keyPressed && buttons[i].c == displaykey && key >= 'a' && key <= 'z') {
       buttons[i].click();
     }
-    buttons[i].display();
+    else if(keyPressed && buttons[i].c != displaykey && key >= 'a' && key <= 'z'){
+      buttons[i].display();
+    }
+    else{
+      buttons[i].display();
+    }
   }
 }
 
@@ -46,7 +68,7 @@ void initializeKeyboard() {
       yOffset += 50;
       xOffset = 150;
     }
-    buttons[i] = new Button(xOffset, 600 + yOffset, letters.charAt(i));
+    buttons[i] = new Button(xOffset, 460 + yOffset, letters.charAt(i));
     xOffset += 50;
   }
 }
@@ -64,19 +86,50 @@ void initializeLights() {
       yOffset += 50;
       xOffset = 150;
     }
-    lights[i] = new Light(xOffset, 100 + yOffset, letters.charAt(i));
+    lights[i] = new Light(xOffset, 300 + yOffset, letters.charAt(i));
     xOffset += 50;
   }
 }
 
 void updateLights() {
+  modifiedkey = runEnigma(displaykey);
   for (int i = 0; i < lights.length; i++) {
     lights[i].display();
     if (keyPressed && lights[i].c == displaykey && key >= 'a' && key <= 'z') {
       lights[i].lightUp();
-      println(lights[i].c);
+    }
+    else{
+      lights[i].display();
     }
   }
+}
+
+void initializePlugBoard(){
+  int yOffset = 50;
+  int xOffset = 75;
+  plugs = new Plug[26];
+  for (int i = 0; i < plugs.length; i++) {
+    if (i == 10) {
+      yOffset += 50;
+      xOffset = 100;
+    }
+    if (i == 19) {
+      yOffset += 50;
+      xOffset = 150;
+    }
+    plugs[i] = new Plug(xOffset, 640 + yOffset, letters.charAt(i));
+    xOffset += 50;
+  }
+}
+
+void updatePlugBoard(){
+  for (int i = 0; i < lights.length; i++) {
+    plugs[i].display();
+  }
+}
+
+void initializeRotors(){
+  
 }
 
 void keyPressed() {

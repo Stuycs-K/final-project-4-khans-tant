@@ -14,18 +14,18 @@ String reflectB = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
 String reflectC = "FVPJIAOYEDRZXWGCTKUQSBNMHL";
 String plugboard = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-void setup() {
-  ArrayList<String> pairs = new ArrayList<String>();
-  pairs.add("AR");
-  pairs.add("GK");
-  pairs.add("OX");
-  setPlugboard(pairs);
-  runEnigma('X');
-  runEnigma('J');
-  runEnigma('A');
-  runEnigma('Y');
-  exit();
-}
+//void setup() {
+//  ArrayList<String> pairs = new ArrayList<String>();
+//  pairs.add("AR");
+//  pairs.add("GK");
+//  pairs.add("OX");
+//  setPlugboard(pairs);
+//  runEnigma('X');
+//  runEnigma('J');
+//  runEnigma('A');
+//  runEnigma('Y');
+//  exit();
+//}
 
 void runEnigma(char letter) {
   char encryptedLetter = 0;

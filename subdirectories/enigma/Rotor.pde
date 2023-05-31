@@ -1,8 +1,8 @@
-class Button {
+class Rotor {
   char c;
   int x, y;
 
-  Button(int xpos, int ypos, char character) {
+  Rotor(int xpos, int ypos, char character) {
     textAlign(CENTER, CENTER);
     textSize(20);
     c = character;
@@ -12,13 +12,7 @@ class Button {
   void display() {
     textSize(20);
     fill(255, 255, 255);
-    circle(x, y, 40);
-    fill(0, 0, 0);
-    text(char(c - 32), x, y);
-  }
-  void click() {
-    fill(255, 255, 255);
-    circle(x, y, 38);
+    rect(x, y, 40, 100);
     fill(0, 0, 0);
     text(char(c - 32), x, y);
   }

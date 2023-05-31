@@ -17,7 +17,9 @@ class Light {
     fill(100);
   }
   void lightUp() {
-    fill(255, 255, 0);
-    circle(x, y, 50);
+    fill(255,255,0);
+    circle(x, y, 40);
+    fill(0);
+    text(char(c - 32), x, y);
   }
 }
