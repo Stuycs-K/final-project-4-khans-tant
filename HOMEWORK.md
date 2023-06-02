@@ -9,3 +9,5 @@ Rotor configuration:
 | Rotor ? | Rotor ? | Rotor ? |
 |---------|---------|---------|
 |    7    |    2    |    7    |
+
+Submit in a text file in google classroom.
