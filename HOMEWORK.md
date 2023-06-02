@@ -10,4 +10,6 @@ Rotor configuration:
 |---------|---------|---------|
 |    7    |    2    |    7    |
 
+Reflector A
+
 Submit in a text file in google classroom.
