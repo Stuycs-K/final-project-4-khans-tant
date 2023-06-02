@@ -2,7 +2,7 @@
 
 Decrypt the message by finding the right Enigma Machine settings and typing in the given text.
 
-Text: BRGKKBANMJBSQDKKWNZBI
+Text: TWIYFAZRQOQRBJSWRYLFT
 
 Rotor configuration: 
 
