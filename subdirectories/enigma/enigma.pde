@@ -14,6 +14,9 @@ boolean mouseReleased;
 PImage img;
 boolean reflectorSelected;
 boolean refClick = false;
+ArrayList<Character> toAdd = new ArrayList<Character>();
+ArrayList<String> pairs = new ArrayList<String>();
+String ref = "A";
 
 void setup() {
   size(1200, 1000);
@@ -48,6 +51,16 @@ void draw() {
     // hehe
     image(img, 870, 700, 1192/4, 854/4);
   }
+  if (toAdd.size() == 2) {
+    String config = "";
+    config += Character.toUpperCase(toAdd.get(0));
+    config += Character.toUpperCase(toAdd.get(1));
+    println(config);
+    toAdd.clear();
+    pairs.add(config);
+    //setPlugboard(pairs);
+  }
+  println(pairs);
 }
 
 void drawEnigma() {
@@ -157,16 +170,10 @@ void updatePlugBoard() {
   int counter = 0;
   for (int i = 0; i < lights.length; i++) {
     plugs[i].display();
-    if(){
-      
-    }
   }
-  if(counter % 2 == 0){
-    
-  }
-  else if(counter % 2 == 1){
-    
-  }
+  //for (int i = 0; i < plugs.length; i++) {
+
+  //}
 }
 
 void initializeRotors() {
@@ -196,34 +203,47 @@ void drawRotors() {
 }
 
 void drawReflector() {
-  text("B", 110 ,100);
+  text(ref, 110, 100);
   int x = 90;
   int y = 190;
   fill(140);
-    rect(x-5, y-65, 50, 150,5);
+  rect(x-5, y-65, 50, 150, 5);
+  if (reflectorSelected == true) {
+    fill(255, 255, 0);
+    rect(x-5, y-65, 50, 150, 5);
+  }
+  if (mouseX >= x && mouseX <= x+40 && mouseY >= y-60 && mouseY <= y+80) {
+    fill(255, 255, 0);
+    rect(x-5, y-65, 50, 150, 5);
+  }
   fill(250);
-    rect(x, y-60, 40, 68);
-    fill(244);
-    rect(x, y-60, 40, 54);
-    fill(238);
-    rect(x, y-60, 40, 38);
-    fill(232);
-    rect(x, y-60, 40, 20);
+  rect(x, y-60, 40, 68);
+  fill(244);
+  rect(x, y-60, 40, 54);
+  fill(238);
+  rect(x, y-60, 40, 38);
+  fill(232);
+  rect(x, y-60, 40, 20);
 
 
 
-    fill(226);
-    rect(x, y, 40, 80);
-    fill(232);
-    rect(x, y, 40, 68);
-    fill(238);
-    rect(x, y, 40, 54);
-    fill(244);
-    rect(x, y, 40, 38);
-    fill(250);
-    rect(x, y, 40, 20);
-    fill(0);
-    fill(255);
+  fill(226);
+  rect(x, y, 40, 80);
+  fill(232);
+  rect(x, y, 40, 68);
+  fill(238);
+  rect(x, y, 40, 54);
+  fill(244);
+  rect(x, y, 40, 38);
+  fill(250);
+  rect(x, y, 40, 20);
+  fill(0);
+  fill(255);
+  if (mouseX >= x && mouseX <= x+40 && mouseY >= y-60 && mouseY <= y+80) {
+    refClick = true;
+  } else {
+    refClick = false;
+  }
   //int x = 200;
   //int y = 200;
   //if (reflectorSelected == true) {
@@ -240,7 +260,7 @@ void drawReflector() {
   //  rect(x, y, 50, 50);
   //  fill(0);
   //  text(reflector, x+10, y+10);
-    //text(num, x+10, y+35);
+  //text(num, x+10, y+35);
 }
 
 void drawPaper() {
@@ -300,7 +320,7 @@ void clearButton() {
       encryptedMessage = "";
     }
   }
-  rect(x, y, 150, 50);
+  rect(x, y, 150, 50, 5);
   fill(0);
   textAlign(LEFT);
   textSize(45);
@@ -319,7 +339,7 @@ void resetclearButton() {
       encryptedMessage = "";
     }
   }
-  rect(x, y, 230, 50);
+  rect(x, y, 230, 50, 5);
   fill(0);
   textAlign(LEFT);
   textSize(30);
@@ -408,16 +428,46 @@ void keyPressed() {
     }
   }
 
-
-
-  //rotor1 = rotorOptions[rotors[0].rotorNum-1];
-  //rotor2 = rotorOptions[rotors[1].rotorNum-1];
-  //rotor3 = rotorOptions[rotors[2].rotorNum-1];
-  println(rotor1);
-  println(rotor2);
-  println(rotor3);
-  println("end");
+  if (reflectorSelected) {
+    if (keyCode == RIGHT) {
+      if (ref.compareTo("A") == 0) {
+        reflector = reflectorOptions[1];
+        ref = "B";
+      }
+      else if (ref.compareTo("B") == 0) {
+        reflector = reflectorOptions[2];
+        ref = "C";
+      }
+      else if (ref.compareTo("C") == 0) {
+        reflector = reflectorOptions[0];
+        ref = "A";
+      }
+    } else if (keyCode == LEFT) {
+      if (ref.compareTo("A") == 0) {
+        reflector = reflectorOptions[2];
+        ref = "C";
+      }
+      else if (ref.compareTo("B") == 0) {
+        reflector = reflectorOptions[0];
+        ref = "A";
+      }
+      else if (ref.compareTo("C") == 0) {
+        reflector = reflectorOptions[1];
+        ref = "B";
+      }
+    }
+  }
 }
+
+
+//rotor1 = rotorOptions[rotors[0].rotorNum-1];
+//rotor2 = rotorOptions[rotors[1].rotorNum-1];
+//rotor3 = rotorOptions[rotors[2].rotorNum-1];
+//println(rotor1);
+//println(rotor2);
+//println(rotor3);
+//println("end");
+
 
 void keyReleased() {
   if (key >= 'a' && key <= 'z') {
@@ -438,6 +488,20 @@ void mouseClicked() {
   for (int i = 0; i < rotors.length; i++) {
     if (rotors[i].canClick) {
       rotors[i].rotorSelected = !rotors[i].rotorSelected;
+    }
+  }
+  if (refClick) {
+    reflectorSelected = !reflectorSelected;
+  }
+  for (int i = 0; i < plugs.length; i++) {
+    if (plugs[i].canClick) {
+      plugs[i].plugSelected = !plugs[i].plugSelected;
+      if (plugs[i].plugSelected) {
+        toAdd.add(plugs[i].c);
+      }
+      //if (!plugs[i].plugSelected) {
+      //  toAdd.remove(plugs[i].c);
+      //}
     }
   }
 }
