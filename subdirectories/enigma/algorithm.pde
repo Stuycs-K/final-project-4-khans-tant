@@ -62,19 +62,19 @@ void rotateRotors() {
     rotors[2].num++;
     //println(rotor3);
   } else if (rotors[2].num-1 == 25 && rotors[1].num-1 < 25) {
-    println("rotor3 done");
+    //println("rotor3 done");
     rotor3 = rotor3.substring(1) + rotor3.substring(0, 1);
     rotors[2].num = 1;
     rotor2 = rotor2.substring(1) + rotor2.substring(0, 1);
     rotors[1].num++;
   } else if (rotors[1].num-1 == 25 && rotors[0].num-1 < 25) {
-    println("rotor2 done");
+    //println("rotor2 done");
     rotor2 = rotor3.substring(1) + rotor3.substring(0, 1);
     rotors[1].num = 1;
     rotor1 = rotor1.substring(1) + rotor1.substring(0, 1);
     rotors[0].num++;
   } else if (rotors[0].num-1 == 25) {
-    println("rotor1 done");
+    //println("rotor1 done");
     rotor1 = rotor1.substring(1) + rotor1.substring(0, 1);
     rotors[0].num = 1;
   }
@@ -104,13 +104,19 @@ void setPlugboard(ArrayList<String> swaps) {
 }
 
 void enigmaReset() {
+  println(rotors[0].rotorNum-1);
+  println(rotors[1].rotorNum-1);
+  println(rotors[2].rotorNum-1);
   rotor1 = rotorOptions[rotors[0].rotorNum-1];
   rotor2 = rotorOptions[rotors[1].rotorNum-1];
   rotor3 = rotorOptions[rotors[2].rotorNum-1];
-  r1 = 0;
-  r2 = 0;
-  r3 = 0;
-  rotors[0].num = r1+1;
-  rotors[1].num = r2+1;
-  rotors[2].num = r3+1;
+  //r1 = 0;
+  //r2 = 0;
+  //r3 = 0;
+  //rotors[0].num = 1;
+  //rotors[1].num = 1;
+  //rotors[2].num = 1;
+  rotors[0].rotorNum = 1;
+  rotors[1].rotorNum = 1;
+  rotors[2].rotorNum = 1;
 }

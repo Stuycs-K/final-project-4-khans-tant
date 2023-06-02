@@ -42,9 +42,9 @@ void draw() {
   background(0);
   drawEnigma();
   drawPaper();
-  resetButton();
+  //resetButton();
   clearButton();
-  resetclearButton();
+  //resetclearButton();
   drawReflector();
   fill(255, 255, 255);
   if (rotors[0].rotorNum == 5 & rotors[1].rotorNum == 5 & rotors[2].rotorNum == 5) {
@@ -55,12 +55,10 @@ void draw() {
     String config = "";
     config += Character.toUpperCase(toAdd.get(0));
     config += Character.toUpperCase(toAdd.get(1));
-    println(config);
     toAdd.clear();
     pairs.add(config);
     //setPlugboard(pairs);
   }
-  println(pairs);
 }
 
 void drawEnigma() {
@@ -312,20 +310,21 @@ void resetButton() {
 
 void clearButton() {
   fill(161, 161, 161);
-  int x = 775;
+  int x = 600;
   int y = 935;
-  if (mouseX >= x && mouseX <= x+150 && mouseY >= y && mouseY <= y+50) {
+  if (mouseX >= x && mouseX <= x+580 && mouseY >= y && mouseY <= y+50) {
     fill(217, 217, 217);
     if (mousePressed) {
       encryptedMessage = "";
     }
   }
-  rect(x, y, 150, 50, 5);
+  rect(x, y, 580, 50, 5);
   fill(0);
   textAlign(LEFT);
   textSize(45);
-  text("CLEAR", 790, 975);
+  text("CLEAR", 830, 975);
   textAlign(CENTER, CENTER);
+  textSize(25);
 }
 
 void resetclearButton() {
@@ -384,7 +383,7 @@ void keyPressed() {
         rotor1 = rotorOptions[rotors[0].rotorNum-1];
         rotor2 = rotorOptions[rotors[1].rotorNum-1];
         rotor3 = rotorOptions[rotors[2].rotorNum-1];
-      } else if (keyCode == UP) {
+      } else if (keyCode == DOWN) {
         if (i == 0) {
           rotor1 = rotor1.substring(1) + rotor1.substring(0, 1);
         } else if (i == 1) {
@@ -396,7 +395,7 @@ void keyPressed() {
           rotors[i].num = 0;
         }
         rotors[i].num++;
-      } else if (keyCode == DOWN) {
+      } else if (keyCode == UP) {
         if (i == 0) {
           rotor1 = rotor1.substring(rotor1.length()-1) + rotor1.substring(0, rotor1.length()-1);
           if (r1 == 1) {
