@@ -1,4 +1,4 @@
-# KhansTant
+# KhansTantInnovation
 
 ## Sudman Khan & Terry Tan
 
