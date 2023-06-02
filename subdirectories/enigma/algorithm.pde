@@ -22,9 +22,11 @@ String reflector;
 //  pairs.add("GK");
 //  pairs.add("OX");
 //  setPlugboard(pairs);
-//  for (int i = 0; i < 30; i++) {
-//    print(i + ": "); 
-//    println(runEnigma('a'));
+//  for (int i = 0; i < 100; i++) {
+//    if (i % 38 == 0) {
+//      print("\n");
+//    }
+//    print(runEnigma('a'));
 //  }
 //  exit();
 //}
@@ -50,31 +52,35 @@ char runEnigma(char letter) {
   //println("3: " + signal);
   encryptedLetter = plugboard.charAt(signal);
   rotateRotors();
+  //print(encryptedLetter);
   return encryptedLetter;
 }
 
 void rotateRotors() {
-  if (r3 < 26) {
+  if (rotors[2].num-1 < 25) {
     rotor3 = rotor3.substring(1) + rotor3.substring(0, 1);
-    r3++;
+    rotors[2].num++;
     //println(rotor3);
-  } else if (r3 == 26 && r2 < 26) {
-    //println("rotor3 done");
+  } else if (rotors[2].num-1 == 25 && rotors[1].num-1 < 25) {
+    println("rotor3 done");
     rotor3 = rotor3.substring(1) + rotor3.substring(0, 1);
-    r3 = 0;
+    rotors[2].num = 1;
     rotor2 = rotor2.substring(1) + rotor2.substring(0, 1);
-    r2++;
-  } else if (r2 == 26 && r1 < 26) {
-    //println("rotor2 done");
+    rotors[1].num++;
+  } else if (rotors[1].num-1 == 25 && rotors[0].num-1 < 25) {
+    println("rotor2 done");
     rotor2 = rotor3.substring(1) + rotor3.substring(0, 1);
-    r2 = 0;
+    rotors[1].num = 1;
     rotor1 = rotor1.substring(1) + rotor1.substring(0, 1);
-    r1++;
-  } else if (r1 == 26) {
-    //println("rotor1 done");
+    rotors[0].num++;
+  } else if (rotors[0].num-1 == 25) {
+    println("rotor1 done");
     rotor1 = rotor1.substring(1) + rotor1.substring(0, 1);
-    r1 = 0;
+    rotors[0].num = 1;
   }
+  //rotors[0].num = r1+1;
+  //rotors[1].num = r2+1;
+  //rotors[2].num = r3+1;
 }
 
 void setPlugboard(ArrayList<String> swaps) {
@@ -95,4 +101,16 @@ void setPlugboard(ArrayList<String> swaps) {
         + plugboard.substring(plugboard.indexOf(A+1), plugboard.indexOf(B)) + A;
     }
   }
+}
+
+void enigmaReset() {
+  rotor1 = rotorOptions[rotors[0].rotorNum-1];
+  rotor2 = rotorOptions[rotors[1].rotorNum-1];
+  rotor3 = rotorOptions[rotors[2].rotorNum-1];
+  r1 = 0;
+  r2 = 0;
+  r3 = 0;
+  rotors[0].num = r1+1;
+  rotors[1].num = r2+1;
+  rotors[2].num = r3+1;
 }
