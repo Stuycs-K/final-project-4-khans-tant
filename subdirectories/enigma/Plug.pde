@@ -1,6 +1,7 @@
 class Plug {
   char c;
   int x, y;
+  boolean canClick;
 
   Plug(int xpos, int ypos, char character) {
     textAlign(CENTER, CENTER);
@@ -11,9 +12,14 @@ class Plug {
   }
   void display() {
     fill(200, 200, 200);
-    ellipse(x, y, 40, 36);
+    rect(x-20, y-17, 40, 34,10);
     fill(0, 0, 0);
     text(char(c - 32), x, y);
+    if (mouseX >= x && mouseX <= x+40 && mouseY >= y-60 && mouseY <= y+80) {
+      canClick = true;
+    } else {
+      canClick = false;
+    }
   }
   void plugged(){
     

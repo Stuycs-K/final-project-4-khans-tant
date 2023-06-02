@@ -46,18 +46,20 @@ void draw() {
   fill(255, 255, 255);
   if (rotors[0].rotorNum == 5 & rotors[1].rotorNum == 5 & rotors[2].rotorNum == 5) {
     // hehe
-    image(img, 600, 600, 1192/2, 854/2);
+    image(img, 870, 700, 1192/4, 854/4);
   }
 }
 
 void drawEnigma() {
   noStroke();
   fill(150);
-  rect(20, 20, 560, 960, 28);
+  rect(20, 20, 560, 860, 28);
   fill(190);
-  rect(20, 20, 560, 790, 28);
+  rect(20, 20, 560, 690, 28);
   fill(230);
-  rect(40, 40, 520, 750, 28);
+  rect(40, 40, 520, 650, 28);
+  fill(190);
+  rect(180, 110, 280, 180, 28);
   updateKeyboard();
   updateLights();
   updatePlugBoard();
@@ -146,21 +148,31 @@ void initializePlugBoard() {
       yOffset += 50;
       xOffset = 150;
     }
-    plugs[i] = new Plug(xOffset, 800 + yOffset, letters.charAt(i));
+    plugs[i] = new Plug(xOffset, 700 + yOffset, letters.charAt(i));
     xOffset += 50;
   }
 }
 
 void updatePlugBoard() {
+  int counter = 0;
   for (int i = 0; i < lights.length; i++) {
     plugs[i].display();
+    if(){
+      
+    }
+  }
+  if(counter % 2 == 0){
+    
+  }
+  else if(counter % 2 == 1){
+    
   }
 }
 
 void initializeRotors() {
   rotors = new Rotor[3];
   for (int i = 0; i < rotors.length; i++) {
-    rotors[i] = new Rotor(100 + 100*i, 100, i+1);
+    rotors[i] = new Rotor(200 + 100*i, 190, i+1);
     rotors[i].rotorNum = i+1;
   }
 }
@@ -184,22 +196,50 @@ void drawRotors() {
 }
 
 void drawReflector() {
-  int x = 200;
-  int y = 200;
-  if (reflectorSelected == true) {
-      fill(255, 255, 0);
-      rect(x-5, y-5, 60, 60, 5);
-    }
-    fill(255);
-    if (mouseX >= x && mouseX <= x+50 && mouseY >= y && mouseY <= y+50) {
-      fill(255, 2, 7);
-      refClick = true;
-    } else {
-      refClick = false;
-    }
-    rect(x, y, 50, 50);
+  text("B", 110 ,100);
+  int x = 90;
+  int y = 190;
+  fill(140);
+    rect(x-5, y-65, 50, 150,5);
+  fill(250);
+    rect(x, y-60, 40, 68);
+    fill(244);
+    rect(x, y-60, 40, 54);
+    fill(238);
+    rect(x, y-60, 40, 38);
+    fill(232);
+    rect(x, y-60, 40, 20);
+
+
+
+    fill(226);
+    rect(x, y, 40, 80);
+    fill(232);
+    rect(x, y, 40, 68);
+    fill(238);
+    rect(x, y, 40, 54);
+    fill(244);
+    rect(x, y, 40, 38);
+    fill(250);
+    rect(x, y, 40, 20);
     fill(0);
-    text(reflector, x+10, y+10);
+    fill(255);
+  //int x = 200;
+  //int y = 200;
+  //if (reflectorSelected == true) {
+  //    fill(255, 255, 0);
+  //    rect(x-5, y-5, 60, 60, 5);
+  //  }
+  //  fill(255);
+  //  if (mouseX >= x && mouseX <= x+50 && mouseY >= y && mouseY <= y+50) {
+  //    fill(255, 2, 7);
+  //    refClick = true;
+  //  } else {
+  //    refClick = false;
+  //  }
+  //  rect(x, y, 50, 50);
+  //  fill(0);
+  //  text(reflector, x+10, y+10);
     //text(num, x+10, y+35);
 }
 
@@ -242,7 +282,7 @@ void resetButton() {
       enigmaReset();
     }
   }
-  rect(x, y, 150, 50);
+  rect(x, y, 150, 50, 5);
   fill(0);
   textAlign(LEFT);
   textSize(45);
